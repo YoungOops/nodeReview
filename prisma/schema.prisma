@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+//프로바이더 -> 프리즈마가 쓸 데이터베이스 유형임
+//url: 데이터베이스를 연결하기 위한 URL
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  userId   Int    @id @default(autoincrement()) @map("productId")
+  email    String @unique @map("productName") @db.VarChar(255)
+  password String @map("title")
+
+  createdAt DateTime @default(now()) @map("createdAt")
+  updatedAt DateTime @updatedAt @map("updatedAt")
+
+  @@map("Users")
+}
+
+model Questions {
+  questionId Int    @id @default(autoincrement()) @map("questionId")
+  userId     Int    @map("userId")
+  User       Users  @relation(fields: [userId], references: [userId])
+  nick       String @map("nick") @db.VarChar
+  title      String @map("title") @db.Text
+  content    String @map("content")
+
+  createdAt DateTime @default(now()) @map("createdAt") @db.DateTime(0)
+  updatedAt DateTime @updatedAt @map("updatedAt")
+
+  @@map("Questions")
+}
+
+model Answers {
+  answerId   Int    @id @default(autoincrement()) @map("postId")
+  usersId    Int    @map("title")
+  questionId Int    @map
+  content    String @map("content") @db.Text
+  password   String @map("password")
+
+  createdAt DateTime @default(now()) @map("createdAt")
+  updatedAt DateTime @updatedAt @map("updatedAt")
+
+  @@map("Answers")
+}
+
+model Comments {
+  answerId  Int      @id @default(autoincrement()) @map("postId")
+  usersId   Int      @map("title")
+  content   String   @map("content") @db.Text
+  password  String   @map("password")
+  createdAt DateTime @default(now()) @map("createdAt")
+  updatedAt DateTime @updatedAt @map("updatedAt")
+
+  @@map("Answers")
+}
