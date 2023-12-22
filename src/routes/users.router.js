@@ -6,10 +6,12 @@ const router = express.Router();
 // 클래스
 const usersController = new UsersController();
 
-/** 유저 생성 API */
+//유저조회
 router.post("/users", usersController.createUser); // 아 이거 위에 클래스 가져다가 만든 메소드 쓰는거임
 
-// /** 게시글 조회 API **/
+//회원가입
+
+//로그인
 // router.get('/', postsController.getPosts);
 
 export default router;
