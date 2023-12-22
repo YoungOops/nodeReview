@@ -1,7 +1,7 @@
 import { UsersService } from "../services/users.service.js";
 
 export class UsersController {
-  //유저생성
+  
   getUsers = async (req, res, next) => {
     try {
       //this.~~Service.findAllUsers(); 그냥 이거 보면 해당하는 게시글들의 목록이 오겠구나 하면 되는거임 계층화 되어있는거 걍 ㄱ

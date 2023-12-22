@@ -1,62 +1,81 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
-//프로바이더 -> 프리즈마가 쓸 데이터베이스 유형임
-//url: 데이터베이스를 연결하기 위한 URL
+//프로바이더 -> 프리즈마가 쓸 데이터베이스 유형임 // url: 데이터베이스를 연결하기 위한 URL
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model Users {
-  userId   Int    @id @default(autoincrement()) @map("productId")
-  email    String @unique @map("productName") @db.VarChar(255)
-  password String @map("title")
+  userId Int @id @default(autoincrement()) @map("userId")
+
+  email    String @unique @map("email")
+  password String @map("password")
 
   createdAt DateTime @default(now()) @map("createdAt")
   updatedAt DateTime @updatedAt @map("updatedAt")
+
+  // 현재 테이블이 해당 테이블과 1:N 관계를 맺습니다.
+  Comments  Comments[]
+  Answers   Answers[]
+  Questions Questions[]
 
   @@map("Users")
 }
 
 model Questions {
-  questionId Int    @id @default(autoincrement()) @map("questionId")
-  userId     Int    @map("userId")
-  User       Users  @relation(fields: [userId], references: [userId])
-  nick       String @map("nick") @db.VarChar
-  title      String @map("title") @db.Text
-  content    String @map("content")
+  questionId Int @id @default(autoincrement()) @map("questionId")
+  userId     Int @map("userId")
 
-  createdAt DateTime @default(now()) @map("createdAt") @db.DateTime(0)
+  nick    String @map("nick")
+  title   String @map("title") @db.Text
+  content String @map("content") @db.Text
+
+  createdAt DateTime @default(now()) @map("createdAt")
   updatedAt DateTime @updatedAt @map("updatedAt")
+
+  Answers Answers[]
+  User    Users     @relation(fields: [userId], references: [userId], onDelete: Cascade)
 
   @@map("Questions")
 }
 
 model Answers {
-  answerId   Int    @id @default(autoincrement()) @map("postId")
-  usersId    Int    @map("title")
-  questionId Int    @map
-  content    String @map("content") @db.Text
-  password   String @map("password")
+  answerId   Int @id @default(autoincrement()) @map("answerId")
+  userId     Int @map("userId")
+  questionId Int @map("questionId")
+
+  nick    String @map("nick")
+  title   String @map("title") @db.Text
+  content String @map("content") @db.Text
 
   createdAt DateTime @default(now()) @map("createdAt")
   updatedAt DateTime @updatedAt @map("updatedAt")
+
+  Comments            Comments[]
+  Users               Users      @relation(fields: [userId], references: [userId], onDelete: Cascade)
+  Questions           Questions? @relation(fields: [questionsQuestionId], references: [questionId])
+  questionsQuestionId Int?
 
   @@map("Answers")
 }
 
 model Comments {
-  answerId  Int      @id @default(autoincrement()) @map("postId")
-  usersId   Int      @map("title")
-  content   String   @map("content") @db.Text
-  password  String   @map("password")
+  commentId Int @id @default(autoincrement()) @map("commentId")
+  userId    Int @map("userId")
+  answerId  Int @map("answerId")
+
+  nick    String @map("nick")
+  content String @map("content") @db.Text
+
   createdAt DateTime @default(now()) @map("createdAt")
   updatedAt DateTime @updatedAt @map("updatedAt")
 
-  @@map("Answers")
+  Users           Users    @relation(fields: [userId], references: [userId], onDelete: Cascade)
+  Answers         Answers? @relation(fields: [answersAnswerId], references: [answerId])
+  answersAnswerId Int?
+
+  @@map("Comments")
 }
