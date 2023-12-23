@@ -8,15 +8,14 @@ import commentsRouter from "./comments.router.js";
 
 const router = express.Router();
 
-router.use("/reservation", reservationsRouter);
+router.use("/auth", authRouter);
 
-router.use("/users/", usersRouter);//yw 2번
+router.use("/users", usersRouter);
 
-router.use("/auth", authRouter);//yw 2번
+router.use("/questions", questionsRouter);
 
-router.use("/reviews", reviewsRouter);
+router.use("/answers", answersRouter);
 
-router.use("/petSitter", petSitterRouter);
+router.use("/comments", commentsRouter);
 
-
-//
+export default router;
