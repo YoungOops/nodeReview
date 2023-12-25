@@ -1,6 +1,7 @@
 import express from "express";
 
-import authRouter from "./auth.router.js";
+// import authRouter from "./auth.router.js";
+
 import usersRouter from "./users.router.js";
 import questionsRouter from "./questions.router.js";
 import answersRouter from "./answers.router.js";
