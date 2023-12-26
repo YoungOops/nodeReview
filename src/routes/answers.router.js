@@ -1,23 +1,23 @@
 import express from "express";
-import { QuestionsController } from "../controllers/questions.controller.js";
+import { AnswersController } from "../controllers/answers.controller.js";
 
 const router = express.Router();
 
-const questionsController = new QuestionsController();
+const answersController = new AnswersController();
 
 /** 조회 **/
-router.get("/", questionsController.getQuestions);
+router.get("/", answersController.getAnswers);
 
 /** 상세 조회 **/
-router.get("/:questionId", questionsController.getQuestionById);
+router.get("/:answerId", answersController.getAnswerById);
 
 /** 작성 **/
-router.post("/", questionsController.createQuestion);
+router.post("/", answersController.createAnswer);
 
 /** 수정 **/
-router.put("/:questionId", questionsController.updateQuestion);
+router.put("/:answerId", answersController.updateAnswer);
 
 /** 삭제 **/
-router.delete("/:questionId", questionsController.deleteQuestion);
+router.delete("/:answerId", answersController.deleteAnswer);
 
 export default router;

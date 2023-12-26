@@ -28,20 +28,20 @@ export class AnswersService {
     });
   };
 
-  /** 답변 상세 */
-  findanswerById = async (answerId) => {
-    // 저장소(Repository)에게 특정 게시글 하나를 요청합니다.
-    const answer = await this.answersRepository.findanswerById(answerId);
+  /** 답변 상세 X 상세 답변 자체가 순차적으로 달려야 한다. */
+  // findanswerById = async (answerId) => {
+  //   // 저장소(Repository)에게 특정 게시글 하나를 요청합니다.
+  //   const answer = await this.answersRepository.findanswerById(answerId);
 
-    return {
-      answerId: answer.answerId,
-      nick: answer.nick,
-      title: answer.title,
-      content: answer.content,
-      createdAt: answer.createdAt,
-      updatedAt: answer.updatedAt
-    };
-  };
+  //   return {
+  //     answerId: answer.answerId,
+  //     nick: answer.nick,
+  //     title: answer.title,
+  //     content: answer.content,
+  //     createdAt: answer.createdAt,
+  //     updatedAt: answer.updatedAt
+  //   };
+  // };
 
   //답변 생성
   createAnswer = async (nick, password, title, content) => {

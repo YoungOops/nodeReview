@@ -5,17 +5,17 @@ export class CommentsController {
   commentsService = new CommentsService();
   // comment 서비스를 클래스를 컨트롤러 클래스의 멤버 변수로 할당합니다. ????? 알아보기 ***********
 
-//   //댓글 조회
-//   getComments = async (req, res, next) => {
-//     try {
-//       // 서비스 계층에 구현된 것 사용하기
-//       const comments = await this.commentsService.findAllComments();
+  //댓글 조회
+  getComments = async (req, res, next) => {
+    try {
+      // 서비스 계층에 구현된 것 사용하기
+      const comments = await this.commentsService.findAllComments();
 
-//       return res.status(200).json({ data: comments });
-//     } catch (err) {
-//       next(err);
-//     }
-//   };
+      return res.status(200).json({ data: comments });
+    } catch (err) {
+      next(err);
+    }
+  };
 
 // 댓글 찾는 기능 일단 보류
 //   getCommentById = async (req, res, next) => {

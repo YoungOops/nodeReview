@@ -5,28 +5,27 @@ import { CommentsRepository } from "../repositories/comments.repository.js";
 export class CommentsService {
   commentsRepository = new CommentsRepository();
 
-  /**댓글 조회 보류 */
-  // findAllComments = async () => {
-  //   // 저장소(Repository)에게 데이터를 요청합니다.
-  //   const comments = await this.commentsRepository.findAllComments();
+  /**댓글 조회 */
+  findAllComments = async () => {
+    // 저장소(Repository)에게 데이터를 요청합니다.
+    const comments = await this.commentsRepository.findAllComments();
 
-  //   // 호출한 comment들을 오래된 순서 부터 정렬합니다.
-  //   comments.sort((a, b) => {
-  //     return a.createdAt - b.createdAt;
-  //   });
+    // 호출한 comment들을 오래된 순서 부터 정렬합니다.
+    comments.sort((a, b) => {
+      return a.createdAt - b.createdAt;
+    });
 
-  //   // 비즈니스 로직을 수행한 후 사용자에게 보여줄 데이터를 가공합니다.
-  //   return comments.map((comment) => {
-  //     return {
-  //       commentId: comment.commentId,
-  //       nick: comment.nick,
-  //       // title: comment.title,
-  //       content: comment.content,
-  //       createdAt: comment.createdAt,
-  //       updatedAt: comment.updatedAt
-  //     };
-  //   });
-  // };
+    // 비즈니스 로직을 수행한 후 사용자에게 보여줄 데이터를 가공합니다.
+    return comments.map((comment) => {
+      return {
+        commentId: comment.commentId,
+        nick: comment.nick,
+        content: comment.content,
+        createdAt: comment.createdAt,
+        updatedAt: comment.updatedAt
+      };
+    });
+  };
 
   // 댓글 상세
   // findCommentById = async (commentId) => {

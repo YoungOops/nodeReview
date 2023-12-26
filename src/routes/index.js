@@ -11,6 +11,7 @@ import commentsRouter from "./comments.router.js";
 
 const router = express.Router();
 
+//유즈는 그냥 다 미들웨어
 router.use("/auth", authRouter);
 
 router.use("/users", usersRouter);
