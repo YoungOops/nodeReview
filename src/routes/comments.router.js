@@ -12,7 +12,7 @@ const questionsController = new CommentsController();
 // router.get("/:questionId", questionsController.getCommentsById);
 
 /** 작성 **/
-router.question("/", questionsController.createComment);
+router.post("/", questionsController.createComment);
 
 /** 코멘트는 수정 불가 **/
 

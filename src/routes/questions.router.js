@@ -12,7 +12,7 @@ router.get("/", questionsController.getQuestions);
 router.get("/:questionId", questionsController.getQuestionById);
 
 /** 작성 **/
-router.question("/", questionsController.createQuestion);
+router.post("/", questionsController.createQuestion);
 
 /** 수정 **/
 router.put("/:questionId", questionsController.updateQuestion);
