@@ -16,14 +16,14 @@ export class QuestionsService {
     });
 
     // 비즈니스 로직을 수행한 후 사용자에게 보여줄 데이터를 가공합니다.
-    return questions.map((question) => {
+    return questions.map((questions) => {
       return {
-        questionId: question.questionId,
-        nick: question.nick,
-        title: question.title,
-        content: question.content,
-        createdAt: question.createdAt,
-        updatedAt: question.updatedAt
+        questionId: questions.questionId,
+        nick: questions.nick,
+        title: questions.title,
+        content: questions.content,
+        createdAt: questions.createdAt,
+        updatedAt: questions.updatedAt
       };
     });
   };
