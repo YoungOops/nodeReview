@@ -30,12 +30,11 @@ export class UsersRepository {
   };
 
   /** 회원가입 */
-  createUser = async (email, name, hashedPassword) => {
+  createUser = async (email, hashedPassword) => {
     // ORM인 Prisma에서 Users 모델의 create 메서드를 사용해 데이터를 요청
     const createdUser = users.create({
       data: {
         email,
-        name,
         password: hashedPassword
       }
     });
@@ -43,14 +42,13 @@ export class UsersRepository {
   };
 
   /** 내 정보수정 */
-  updateUser = async (id, name, hashedPassword) => {
+  updateUser = async (id, hashedPassword) => {
     // ORM인 Prisma에서 Users 모델의 update 메서드를 사용해 데이터를 수정
     const updateUser = await users.update({
       where: {
         id: +id
       },
       data: {
-        name,
         password: hashedPassword
       }
     });
