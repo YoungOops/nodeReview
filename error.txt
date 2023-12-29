@@ -1,0 +1,3 @@
+TypeError: this.answersRepository.createAnswer is not a function
+뜻 : 앤써 레파지토리라는 객체에 크리에이트 엔써라는 함수가 없다.
+엔서 레파지토리에서, 그러면 진짜 있는가 없는가 확인. 

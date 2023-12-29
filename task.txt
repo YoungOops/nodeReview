@@ -1,0 +1,3 @@
+answer
+모든 답변 찾기에서 sort, map 
+orderBy , select 로 변경

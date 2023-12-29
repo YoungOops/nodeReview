@@ -31,10 +31,10 @@ export class QuestionsController {
 
   createQuestion = async (req, res, next) => {
     try {
-      const { nick, password, title, content } = req.body;
+      const { nick, title, content, userId } = req.body;
 
       // 서비스 계층에 구현된 createQuestion 사용
-      const createdQuestion = await this.questionsService.createQuestion(nick, password, title, content);
+      const createdQuestion = await this.questionsService.createQuestion(nick, title, content, userId);
 
       return res.status(201).json({ data: createdQuestion });
     } catch (err) {

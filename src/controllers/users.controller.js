@@ -2,7 +2,7 @@ import { UsersService } from "../services/users.service.js";
 import validator from "validator"; //컨트롤러에서 벨리데이션
 
 export class UsersController {
-userService = new UsersService();
+  usersService = new UsersService();
 
   getUsers = async (req, res, next) => {
     try {
@@ -31,12 +31,12 @@ userService = new UsersService();
 
   createUser = async (req, res, next) => {
     try {
-      const { email, password } = req.body;
+      const { email, password, confirmPassword } = req.body;
 
-      if (!email || !password ) throw new Error("InvalidParamsError");
+      if (!email || !password) throw new Error("InvalidParamsError");
       if (!validator.isEmail(email)) throw new Error("NotEmail");
       if (!validator.equals(password, confirmPassword)) throw new Error("NotSamePasswords");
-     
+
       // 서비스 계층에 구현된 createUser 로직을 실행합니다.
       const createdUser = await this.usersService.createUser(email, password);
 

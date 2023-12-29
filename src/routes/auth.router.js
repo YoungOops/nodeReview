@@ -5,7 +5,7 @@ import authMiddleware from "../middlewares/auth.middleware.js";
 const router = express.Router();
 
 // 인스턴스 생성
-const authController = new AuthController(); //yw 3번
+const authController = new AuthController();
 
 /** 로그인 API **/
 router.post("/login", authController.login);

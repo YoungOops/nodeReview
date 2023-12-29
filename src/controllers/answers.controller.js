@@ -37,6 +37,9 @@ export class AnswersController {
       // 서비스 계층에 구현된 createanswer 사용
       const createdAnswer = await this.answersService.createAnswer(nick, password, title, content);
 
+      //유효성 체크를 여기서 해주는 것이 좋다. *****
+      //직접 체크 or 라이브러리 모듈 사용 익스프레스 벨리데이션, Joi
+
       return res.status(201).json({ data: createdAnswer });
     } catch (err) {
       next(err);

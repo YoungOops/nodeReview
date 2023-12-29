@@ -17,19 +17,19 @@ export class CommentsController {
     }
   };
 
-// 댓글 찾는 기능 일단 보류
-//   getCommentById = async (req, res, next) => {
-//     try {
-//       const { commentId } = req.params;
+  // 댓글 찾는 기능 일단 보류
+  //   getCommentById = async (req, res, next) => {
+  //     try {
+  //       const { commentId } = req.params;
 
-//       // 서비스 계층에 구현된 findcommentById 사용
-//       const comment = await this.commentsService.findCommentById(commentId);
+  //       // 서비스 계층에 구현된 findcommentById 사용
+  //       const comment = await this.commentsService.findCommentById(commentId);
 
-//       return res.status(200).json({ data: comment });
-//     } catch (err) {
-//       next(err);
-//     }
-//   };
+  //       return res.status(200).json({ data: comment });
+  //     } catch (err) {
+  //       next(err);
+  //     }
+  //   };
 
   createComment = async (req, res, next) => {
     try {
@@ -44,19 +44,19 @@ export class CommentsController {
     }
   };
 
-//   updatecomment = async (req, res, next) => {
-//     try {
-//       const { commentId } = req.params;
-//       const { nick, content } = req.body;
+  //   updatecomment = async (req, res, next) => {
+  //     try {
+  //       const { commentId } = req.params;
+  //       const { nick, content } = req.body;
 
-//       // 서비스 계층에 구현된 updatecomment 사용
-//       const updatedComment = await this.commentsService.updateComment(commentId, password, content);
+  //       // 서비스 계층에 구현된 updatecomment 사용
+  //       const updatedComment = await this.commentsService.updateComment(commentId, password, content);
 
-//       return res.status(200).json({ data: updatedcomment });
-//     } catch (err) {
-//       next(err);
-//     }
-//   };
+  //       return res.status(200).json({ data: updatedcomment });
+  //     } catch (err) {
+  //       next(err);
+  //     }
+  //   };
 
   deleteComment = async (req, res, next) => {
     try {

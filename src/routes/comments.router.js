@@ -9,7 +9,6 @@ const commentsController = new CommentsController();
 router.get("/", commentsController.getComments);
 
 /** 상세 조회 기능 없음. **/
-// router.get("/:questionId", questionsController.getCommentsById);
 
 /** 작성 **/
 router.post("/", commentsController.createComment);

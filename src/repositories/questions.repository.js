@@ -17,14 +17,14 @@ export class QuestionsRepository {
     return question;
   };
 
-  createQuestions = async (nick, password, title, content) => {
+  createQuestion = async (nick, title, content, userId) => {
     // ORM인 Prisma에서 questions 모델의 create 메서드를 사용해 데이터를 요청합니다.
     const createdQuestion = await prisma.questions.create({
       data: {
         nick,
-        password,
         title,
-        content
+        content,
+        userId
       }
     });
 

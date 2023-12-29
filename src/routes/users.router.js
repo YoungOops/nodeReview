@@ -7,7 +7,7 @@ const router = express.Router();
 const usersController = new UsersController();
 
 /** 조회 **/
-router.get("/users", usersController.getUsers);
+router.get("/", usersController.getUsers);
 
 /** 유저 상세 조회 */
 router.get("/:userId", usersController.getUserById);
@@ -15,7 +15,7 @@ router.get("/:userId", usersController.getUserById);
 /** 회원가입 */
 router.post("/signup", usersController.createUser); // 아 이거 위에 클래스 가져다가 만든 메소드 쓰는거임
 
-/** 로그인 */
+/** 로그인, 로그아웃은 auth에서 */
 
 /** 회원 정보 수정 */
 
