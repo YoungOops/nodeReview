@@ -52,9 +52,11 @@ export class QuestionsService {
     return {
       questionId: createdQuestion.questionId,
       userId: createdQuestion.userId,
+
       nick: createdQuestion.nick,
       title: createdQuestion.title,
       content: createdQuestion.content,
+
       createdAt: createdQuestion.createdAt,
       updatedAt: createdQuestion.updatedAt
     };

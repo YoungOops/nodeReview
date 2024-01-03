@@ -29,12 +29,11 @@ export class AuthService {
 
     // jwt 토큰 생성
     const accessToken = jwt.sign({ id: user.id }, accessTokenSecretKey, {
-      expiresIn: "1m"
+      expiresIn: "10h"
     });
 
     return {
       id: user.id,
-      name: user.name,
       email: user.email,
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,

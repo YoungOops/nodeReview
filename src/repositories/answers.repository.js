@@ -3,7 +3,20 @@ import { prisma } from "../utils/prisma/index.js";
 export class AnswersRepository {
   findAllAnswers = async () => {
     // Prisma에서 answers 모델의 findMany 메서드를 사용해 데이터를 요청합니다.
-    const answers = await prisma.answers.findMany();
+    const answers = await prisma.answers.findMany({
+      //최초의 게시물 부터 정렬 해야 함
+      orderBy: {
+        answerId: "asc"
+      },
+      select: {
+        answerId: true,
+        nick: true,
+        title: true,
+        content: true,
+        createdAt: true,
+        updatedAt: true
+      }
+    });
 
     return answers;
   };
@@ -17,12 +30,15 @@ export class AnswersRepository {
     return answer;
   };
 
-  createAnswer = async (nick, password, title, content) => {
+  //망할 패스워드 제거, 외래키 추가
+  createAnswer = async (userId, questionId, nick, title, content) => {
     // Prisma에서 answers 모델의 create 메서드를 사용해 데이터를 요청합니다.
     const createdAnswer = await prisma.answers.create({
       data: {
+        userId,
+        questionId,
+
         nick,
-        password,
         title,
         content
       }
