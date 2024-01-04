@@ -54,10 +54,9 @@ model Answers {
   createdAt DateTime @default(now()) @map("createdAt")
   updatedAt DateTime @updatedAt @map("updatedAt")
 
-  Comments            Comments[]
-  Users               Users      @relation(fields: [userId], references: [userId], onDelete: Cascade)
-  Questions           Questions  @relation(fields: [questionsQuestionId], references: [questionId])
-  questionsQuestionId Int
+  Comments  Comments[]
+  Users     Users      @relation(fields: [userId], references: [userId], onDelete: Cascade)
+  Questions Questions  @relation(fields: [questionId], references: [questionId], onDelete: Cascade)
 
   @@map("Answers")
 }
@@ -73,9 +72,8 @@ model Comments {
   createdAt DateTime @default(now()) @map("createdAt")
   updatedAt DateTime @updatedAt @map("updatedAt")
 
-  Users           Users   @relation(fields: [userId], references: [userId], onDelete: Cascade)
-  Answers         Answers @relation(fields: [answersAnswerId], references: [answerId])
-  answersAnswerId Int
+  Users   Users   @relation(fields: [userId], references: [userId], onDelete: Cascade)
+  Answers Answers @relation(fields: [answerId], references: [answerId], onDelete: Cascade)
 
   @@map("Comments")
 }

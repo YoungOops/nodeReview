@@ -56,9 +56,11 @@ export class AnswersService {
       userId: createdAnswer.userId,
       questionId: createdAnswer.questionId,
       answerId: createdAnswer.answerId,
+
       nick: createdAnswer.nick,
       title: createdAnswer.title,
       content: createdAnswer.content,
+
       createdAt: createdAnswer.createdAt,
       updatedAt: createdAnswer.updatedAt
     };

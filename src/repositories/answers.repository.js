@@ -30,7 +30,7 @@ export class AnswersRepository {
     return answer;
   };
 
-  //망할 패스워드 제거, 외래키 추가
+  //패스워드제거, 외래키 추가
   createAnswer = async (userId, questionId, nick, title, content) => {
     // Prisma에서 answers 모델의 create 메서드를 사용해 데이터를 요청합니다.
     const createdAnswer = await prisma.answers.create({
